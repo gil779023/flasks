@@ -9,7 +9,7 @@ def hello_world():
 @app.route("/home")
 def home_page():
     return """<h2>homepage</h2>
-<img width="150px"  src="/>
+<img width="150px"  src=""/>
 <a href="/">Ver mais</a><br/>
 """
 
