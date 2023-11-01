@@ -1,0 +1,42 @@
+version: '3.8'  # Versão do Docker Compose usada neste arquivo.
+
+services:  # Define os serviços que serão executados como parte do aplicativo.
+
+  sqlite-db:  # Serviço para o banco de dados SQLite.
+    image: debian:buster-slim  # Usa a imagem oficial do Debian Buster.
+
+     # Executa um comando para atualizar os pacotes, instalar o SQLite3 e criar o banco de dados.
+    command: >
+      /bin/sh -c "apt-get update && apt-get install -y sqlite3 && mkdir -p /data && sqlite3 /data/database.db"  
+     
+    volumes:
+      - sqlite-data:/data  # Cria um volume chamado "sqlite-data" para armazenar dados.
+
+  flask-app:  # Serviço para o aplicativo Flask.
+    build:
+      context: .  # O contexto de construção é o diretório atual.
+      dockerfile: Dockerfile  # Usa o arquivo Dockerfile no mesmo diretório.
+    ports:
+      - "5000:5000"  # Mapeia a porta 5000 do host para a porta 5000 do contêiner.
+    volumes:
+      - app-data:/app  # Cria um volume chamado "app-data" montado em /app no contêiner.
+      - ./templates:/app/templates
+      - ./static:/app/static
+    environment:
+      - FLASK_ENV=development  # Define a variável de ambiente FLASK_ENV como "development".
+      - FLASK_APP=app.py  # Define a variável de ambiente FLASK_APP como "app.py".
+    depends_on:
+      - sqlite-db  # Especifica que este serviço depende do serviço "sqlite-db".
+
+  web:  # Serviço para o servidor da web.
+    build: .  # Usa o diretório atual como contexto para a construção.
+    container_name: meu-app-flask  # Define o nome personalizado do contêiner.
+    ports:
+      - "5001:5000"  # Mapeia a porta 5001 do host para a porta 5000 do contêiner.
+    depends_on:
+      - sqlite-db  # Especifica que este serviço depende do serviço "sqlite-db".
+
+  
+volumes:
+  app-data:  # Define o volume "app-data" para compartilhar dados com o serviço "flask-app".
+  sqlite-data:  # Define o volume "sqlite-data" para compartilhar dados com o serviço "sqlite-db".

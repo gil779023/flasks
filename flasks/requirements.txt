@@ -1,0 +1,4 @@
+fastapi
+uvicorn
+flask
+# lista as dependências necessárias para um projeto Python

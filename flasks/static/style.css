@@ -1,0 +1,95 @@
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Agenda.jpg/1200px-Agenda.jpg'); /* Substitua 'caminho-para-sua-imagem.jpg' pelo caminho real da sua imagem de fundo */
+    background-color: #f2f2f2;
+    background-size: cover; /* Para ajustar a imagem ao tamanho da tela */
+    background-repeat: no-repeat; /* Para evitar repetição da imagem */
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo para o cabeçalho */
+h1 {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    margin: 0;
+}
+
+/* Estilo para o formulário de adição de eventos */
+form {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 15px;
+    align-items: center;
+}
+
+/* Estilo para a lista de eventos */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Estilo para os links de remoção */
+a {
+    text-decoration: none;
+    color: #cc0000;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+/* Estilo para os detalhes do evento */
+.event-details {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 20px;
+}
+
+/* Estilo para o botão de adicionar evento */
+button[type="submit"] {
+    background-color: #333333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+button:hover{
+    background-color: aqua;
+}
+
+/* Estilo para os campos de entrada de texto */
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+/* Estilo para os campos de entrada de data e hora */
+input[type="date"],
+input[type="time"] {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
